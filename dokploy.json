@@ -1,0 +1,6 @@
+{
+  "buildCommand": "npm run build",
+  "startCommand": "npm run preview",
+  "postBuildCommand": "npm run build",
+  "publishDirectory": "dist"
+}
