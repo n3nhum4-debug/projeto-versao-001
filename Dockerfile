@@ -20,11 +20,8 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-# Copy package files
-COPY package*.json ./
-
-# Install only production dependencies
-RUN npm install --only=production
+# Install serve to properly serve the static build
+RUN npm install -g serve
 
 # Copy built files from builder
 COPY --from=builder /app/dist ./dist
@@ -32,5 +29,5 @@ COPY --from=builder /app/dist ./dist
 # Expose port
 EXPOSE 3000
 
-# Start command
-CMD ["npm", "run", "preview"]
+# Start command - serve exposes to 0.0.0.0 by default
+CMD ["serve", "-s", "dist", "-l", "3000"]
