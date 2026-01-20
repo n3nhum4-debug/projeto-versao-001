@@ -1,0 +1,603 @@
+/**
+ * ============================================================================
+ * K1RA DESIGN SYSTEM
+ * Kerber Labs - Sistema de IA para Engenharia
+ * 
+ * Design Philosophy: Premium, Sophisticated, Dark-First
+ * Inspired by: Linear, Stripe, Vercel, Apple
+ * 
+ * All colors MUST be HSL format.
+ * ============================================================================
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================================
+   CSS CUSTOM PROPERTIES - DESIGN TOKENS
+   ============================================================================ */
+
+@layer base {
+  :root {
+    /* --------------------------------------------------------------------------
+       CORE COLORS - Light Mode (rarely used, dark is default)
+       -------------------------------------------------------------------------- */
+    --background: 0 0% 100%;
+    --foreground: 220 20% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 10%;
+
+    /* Primary: K1RA Blue - Electric, Premium */
+    --primary: 210 100% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary: Subtle Gray */
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 20% 10%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 10% 50%;
+
+    /* Accent: Cyan Electric Glow */
+    --accent: 195 100% 50%;
+    --accent-foreground: 220 20% 5%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 14% 90%;
+    --input: 220 14% 90%;
+    --ring: 210 100% 45%;
+
+    --radius: 0.75rem;
+
+    /* --------------------------------------------------------------------------
+       EXTENDED PALETTE
+       -------------------------------------------------------------------------- */
+    --k1ra-blue: 210 100% 45%;
+    --k1ra-blue-light: 210 100% 60%;
+    --k1ra-blue-dark: 210 100% 35%;
+    --k1ra-cyan: 195 100% 50%;
+    --k1ra-cyan-glow: 195 100% 60%;
+    
+    --success: 160 84% 39%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 0%;
+    --info: 210 100% 50%;
+    --info-foreground: 0 0% 100%;
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  /* --------------------------------------------------------------------------
+     DARK MODE - PRIMARY THEME FOR K1RA
+     -------------------------------------------------------------------------- */
+  .dark {
+    /* Deep Space Black with subtle blue undertone */
+    --background: 225 25% 4%;
+    --foreground: 210 20% 98%;
+
+    /* Cards with glass effect base */
+    --card: 225 25% 6%;
+    --card-foreground: 210 20% 98%;
+
+    --popover: 225 25% 8%;
+    --popover-foreground: 210 20% 98%;
+
+    /* Primary: Electric Blue */
+    --primary: 210 100% 55%;
+    --primary-foreground: 225 25% 4%;
+
+    /* Secondary: Elevated surface */
+    --secondary: 225 20% 12%;
+    --secondary-foreground: 210 20% 90%;
+
+    /* Muted: Subdued elements */
+    --muted: 225 20% 15%;
+    --muted-foreground: 210 15% 55%;
+
+    /* Accent: Cyan glow */
+    --accent: 195 100% 55%;
+    --accent-foreground: 225 25% 4%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders with subtle glow potential */
+    --border: 225 15% 15%;
+    --input: 225 15% 18%;
+    --ring: 210 100% 55%;
+
+    /* Extended Dark Palette */
+    --k1ra-blue: 210 100% 55%;
+    --k1ra-blue-light: 210 100% 70%;
+    --k1ra-blue-dark: 210 100% 40%;
+    --k1ra-cyan: 195 100% 55%;
+    --k1ra-cyan-glow: 195 100% 70%;
+
+    /* Sidebar Dark */
+    --sidebar-background: 225 25% 5%;
+    --sidebar-foreground: 210 20% 90%;
+    --sidebar-primary: 210 100% 55%;
+    --sidebar-primary-foreground: 225 25% 4%;
+    --sidebar-accent: 225 20% 10%;
+    --sidebar-accent-foreground: 210 20% 95%;
+    --sidebar-border: 225 15% 12%;
+    --sidebar-ring: 210 100% 55%;
+  }
+}
+
+/* ============================================================================
+   BASE STYLES
+   ============================================================================ */
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "cv11", "ss01", "ss03";
+  }
+
+  /* Selection styling */
+  ::selection {
+    @apply bg-primary/30 text-foreground;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-full;
+    border: 2px solid transparent;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/30;
+  }
+}
+
+/* ============================================================================
+   COMPONENT UTILITIES
+   ============================================================================ */
+
+@layer components {
+  /* --------------------------------------------------------------------------
+     GLASS MORPHISM EFFECTS
+     -------------------------------------------------------------------------- */
+  .glass {
+    @apply bg-card/60 backdrop-blur-xl border border-border/50;
+  }
+
+  .glass-strong {
+    @apply bg-card/80 backdrop-blur-2xl border border-border/60;
+  }
+
+  .glass-subtle {
+    @apply bg-card/30 backdrop-blur-lg border border-border/30;
+  }
+
+  /* --------------------------------------------------------------------------
+     GLOW EFFECTS
+     -------------------------------------------------------------------------- */
+  .glow-primary {
+    box-shadow: 0 0 60px -15px hsl(var(--primary) / 0.4);
+  }
+
+  .glow-accent {
+    box-shadow: 0 0 60px -15px hsl(var(--accent) / 0.4);
+  }
+
+  .glow-subtle {
+    box-shadow: 0 0 40px -20px hsl(var(--primary) / 0.3);
+  }
+
+  /* Text glow for headings */
+  .text-glow {
+    text-shadow: 0 0 40px hsl(var(--primary) / 0.5);
+  }
+
+  .text-glow-accent {
+    text-shadow: 0 0 40px hsl(var(--accent) / 0.5);
+  }
+
+  /* --------------------------------------------------------------------------
+     GRADIENT UTILITIES
+     -------------------------------------------------------------------------- */
+  .gradient-primary {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background: linear-gradient(135deg, hsl(var(--foreground)) 0%, hsl(var(--muted-foreground)) 100%);
+  }
+
+  .gradient-text-primary {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+  }
+
+  .gradient-text-hero {
+    @apply bg-clip-text text-transparent;
+    background: linear-gradient(135deg, hsl(var(--foreground)) 0%, hsl(var(--primary)) 50%, hsl(var(--accent)) 100%);
+  }
+
+  .gradient-border {
+    background: linear-gradient(135deg, hsl(var(--border)) 0%, hsl(var(--primary) / 0.3) 50%, hsl(var(--border)) 100%);
+  }
+
+  .gradient-mesh {
+    background: 
+      radial-gradient(at 40% 20%, hsl(var(--primary) / 0.15) 0px, transparent 50%),
+      radial-gradient(at 80% 0%, hsl(var(--accent) / 0.1) 0px, transparent 50%),
+      radial-gradient(at 0% 50%, hsl(var(--primary) / 0.1) 0px, transparent 50%),
+      radial-gradient(at 80% 50%, hsl(var(--accent) / 0.08) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, hsl(var(--primary) / 0.1) 0px, transparent 50%);
+  }
+
+  /* --------------------------------------------------------------------------
+     ANIMATED BACKGROUNDS
+     -------------------------------------------------------------------------- */
+  .bg-grid {
+    background-size: 60px 60px;
+    background-image: 
+      linear-gradient(to right, hsl(var(--border) / 0.3) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.3) 1px, transparent 1px);
+  }
+
+  .bg-dots {
+    background-image: radial-gradient(circle, hsl(var(--border)) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+  }
+
+  /* --------------------------------------------------------------------------
+     INTERACTIVE ELEMENTS
+     -------------------------------------------------------------------------- */
+  .hover-lift {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-2px);
+  }
+
+  .hover-glow {
+    @apply transition-all duration-300;
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 0 30px -5px hsl(var(--primary) / 0.4);
+  }
+
+  .hover-border-glow {
+    @apply transition-all duration-300;
+  }
+
+  .hover-border-glow:hover {
+    border-color: hsl(var(--primary) / 0.5);
+    box-shadow: 0 0 20px -5px hsl(var(--primary) / 0.3);
+  }
+
+  /* --------------------------------------------------------------------------
+     LINK UNDERLINE ANIMATION
+     -------------------------------------------------------------------------- */
+  .link-underline {
+    @apply relative;
+  }
+
+  .link-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-px bg-primary scale-x-0 origin-right transition-transform duration-300;
+  }
+
+  .link-underline:hover::after {
+    @apply scale-x-100 origin-left;
+  }
+
+  /* --------------------------------------------------------------------------
+     CARD VARIANTS
+     -------------------------------------------------------------------------- */
+  .card-elevated {
+    @apply bg-card border border-border/50 rounded-xl shadow-lg;
+    box-shadow: 
+      0 4px 6px -1px hsl(0 0% 0% / 0.1),
+      0 2px 4px -2px hsl(0 0% 0% / 0.1),
+      0 0 0 1px hsl(var(--border) / 0.1);
+  }
+
+  .card-interactive {
+    @apply card-elevated transition-all duration-300 cursor-pointer;
+  }
+
+  .card-interactive:hover {
+    @apply border-primary/30;
+    transform: translateY(-2px);
+    box-shadow: 
+      0 10px 15px -3px hsl(0 0% 0% / 0.15),
+      0 4px 6px -4px hsl(0 0% 0% / 0.1),
+      0 0 0 1px hsl(var(--primary) / 0.1),
+      0 0 40px -10px hsl(var(--primary) / 0.2);
+  }
+
+  .card-pricing {
+    @apply card-elevated relative overflow-hidden;
+  }
+
+  .card-pricing-featured {
+    @apply card-pricing border-primary/50;
+    box-shadow: 
+      0 4px 6px -1px hsl(0 0% 0% / 0.1),
+      0 0 0 1px hsl(var(--primary) / 0.3),
+      0 0 60px -15px hsl(var(--primary) / 0.3);
+  }
+
+  /* --------------------------------------------------------------------------
+     BUTTON ENHANCEMENTS
+     -------------------------------------------------------------------------- */
+  .btn-shine {
+    @apply relative overflow-hidden;
+  }
+
+  .btn-shine::before {
+    content: '';
+    @apply absolute inset-0 -translate-x-full;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(0 0% 100% / 0.1),
+      transparent
+    );
+    transition: transform 0.5s ease;
+  }
+
+  .btn-shine:hover::before {
+    @apply translate-x-full;
+  }
+
+  /* --------------------------------------------------------------------------
+     SECTION CONTAINERS
+     -------------------------------------------------------------------------- */
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-16 sm:py-24 lg:py-32;
+  }
+
+  /* --------------------------------------------------------------------------
+     TYPOGRAPHY UTILITIES
+     -------------------------------------------------------------------------- */
+  .heading-display {
+    @apply font-bold tracking-tight;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-feature-settings: "cv11", "ss01";
+  }
+
+  .heading-1 {
+    @apply heading-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl;
+  }
+
+  .heading-2 {
+    @apply heading-display text-3xl sm:text-4xl lg:text-5xl;
+  }
+
+  .heading-3 {
+    @apply heading-display text-2xl sm:text-3xl lg:text-4xl;
+  }
+
+  .heading-4 {
+    @apply heading-display text-xl sm:text-2xl lg:text-3xl;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* --------------------------------------------------------------------------
+     SKELETON LOADING
+     -------------------------------------------------------------------------- */
+  .skeleton {
+    @apply bg-muted animate-pulse rounded;
+  }
+
+  .skeleton-text {
+    @apply skeleton h-4 w-full;
+  }
+
+  .skeleton-heading {
+    @apply skeleton h-8 w-3/4;
+  }
+}
+
+/* ============================================================================
+   UTILITY CLASSES
+   ============================================================================ */
+
+@layer utilities {
+  /* Animation delays */
+  .animation-delay-100 { animation-delay: 100ms; }
+  .animation-delay-200 { animation-delay: 200ms; }
+  .animation-delay-300 { animation-delay: 300ms; }
+  .animation-delay-400 { animation-delay: 400ms; }
+  .animation-delay-500 { animation-delay: 500ms; }
+  .animation-delay-700 { animation-delay: 700ms; }
+  .animation-delay-1000 { animation-delay: 1000ms; }
+
+  /* Backdrop blur extras */
+  .backdrop-blur-3xl {
+    backdrop-filter: blur(64px);
+  }
+
+  /* Safe area insets for mobile */
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .pt-safe {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Focus visible only on keyboard navigation */
+  .focus-ring {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+}
+
+/* ============================================================================
+   KEYFRAME ANIMATIONS
+   ============================================================================ */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 20px -5px hsl(var(--primary) / 0.4);
+  }
+  50% { 
+    box-shadow: 0 0 40px -5px hsl(var(--primary) / 0.6);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-down {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Animation classes */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s linear infinite;
+  background-size: 200% 100%;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+.animate-fade-in-down {
+  animation: fade-in-down 0.6s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.5s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.6s ease-out forwards;
+}
+
+.animate-gradient {
+  animation: gradient-shift 8s ease infinite;
+  background-size: 200% 200%;
+}
