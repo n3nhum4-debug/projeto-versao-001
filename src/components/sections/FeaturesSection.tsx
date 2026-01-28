@@ -91,7 +91,7 @@ export function FeaturesSection() {
           </motion.span>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tight text-balance mb-4">
             Tudo que Você Precisa para{" "}
-            <span className="gradient-text-primary">Criar Projetos</span>
+            <span className="gradient-text-primary">Projetos de Engenharia</span>
           </h2>
           <p className="text-sm sm:text-base lg:text-lg text-muted-foreground max-w-2xl mx-auto">
             Uma plataforma completa que combina inteligência artificial avançada

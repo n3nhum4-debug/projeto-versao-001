@@ -136,12 +136,12 @@ export function HeroSection() {
                 <Sparkles className="w-4 h-4 text-primary" />
               </motion.div>
               <span className="text-sm font-medium text-foreground">
-                Inteligência Artificial para Engenharia
+                K1RA: Inteligência Artificial para Engenharia
               </span>
             </motion.div>
           </motion.div>
 
-          {/* Main Heading - Sophisticated Typography */}
+          {/* Main Heading - Sophisticated Typography - Optimized for SEO (H1) */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -150,21 +150,21 @@ export function HeroSection() {
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-[1.05] mb-6 lg:mb-8">
               <span className="block">Transforme Ideias em</span>
               <span className="block mt-2 gradient-text-primary">
-                Projetos Profissionais
+                Projetos de Engenharia
               </span>
             </h1>
           </motion.div>
 
-          {/* Subheading */}
-          <motion.p
+          {/* Subheading - Optimized for SEO (H2) */}
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto mb-10 lg:mb-12 leading-relaxed"
+            className="text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto mb-10 lg:mb-12 leading-relaxed font-normal"
           >
             A K1RA utiliza IA de última geração para criar projetos de engenharia
-            completos — entregues em até 2 dias úteis.
-          </motion.p>
+            completos e desenhos CAD profissionais — entregues em até 2 dias úteis.
+          </motion.h2>
 
           {/* CTA Buttons */}
           <motion.div
@@ -180,7 +180,7 @@ export function HeroSection() {
               className="group h-14 px-8 text-base rounded-2xl shadow-2xl shadow-primary/30 hover:shadow-primary/40 transition-shadow"
             >
               <Link to="/chat">
-                <span>Começar Meu Projeto</span>
+                <span>Começar Meu Projeto Agora</span>
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
