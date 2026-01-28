@@ -5,7 +5,7 @@ Disallow: /checkout/success
 Disallow: /checkout/cancel
 
 # Sitemap
-Sitemap: https://k1ra.kerberlabs.com/sitemap.xml
+Sitemap: https://k1ra.com.br/sitemap.xml
 
 # Crawl-delay for some bots
 User-agent: dotbot
